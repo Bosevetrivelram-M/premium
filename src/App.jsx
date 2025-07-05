@@ -1,6 +1,8 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import { EntrySection } from "./components/EntrySection"
 import { SearchSection } from "./components/SearchSection"
+import { Home } from "./components/Home";
 
 function App() {
   const [entries, setEntries] = useState([]);
@@ -10,10 +12,15 @@ function App() {
   }
 
   return (
-    <div className="flex items-center justify-between">
-      <EntrySection onSave={addEntry}/>
-      <SearchSection entries={entries}/>
-    </div>
+    <>
+      <BrowserRouter>
+      <Routes>
+          <Route path="/entry" element={<EntrySection onSave={addEntry}/>}/>
+          <Route path="/search" element={<SearchSection entries={entries}/>} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 
