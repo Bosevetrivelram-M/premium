@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const EntrySection = ({ onSave }) => {
     const [data, setData] = useState({
         name: "",
         policyNumber: "",
+        premiumDate: "",
         phoneNumber: "",
         address: "" 
     });
-
+    
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -16,9 +19,11 @@ export const EntrySection = ({ onSave }) => {
     }
     const handleSave = () => {
         onSave(data);
+        console.log(data);
         setData({
             name: "",
             policyNumber: "",
+            premiumDate: "",
             phoneNumber: "",
             address: "" 
         });
@@ -46,6 +51,16 @@ export const EntrySection = ({ onSave }) => {
                             value={data.policyNumber}
                             onChange={handleChange}
                             required 
+                            className="border border-blue-500 rounded-md"
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <h2>Premium date</h2>
+                        <DatePicker
+                            name="premiumDate"
+                            value={data.premiumDate}
+                            selected={data.premiumDate}
+                            onChange={(date) => setData({...data, premiumDate: date})}
                             className="border border-blue-500 rounded-md"
                         />
                     </div>

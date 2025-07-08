@@ -48,18 +48,31 @@ export const SearchSection = ({entries}) => {
                 <div>
                     <h2>Results</h2>
                     {results.map((result, index) => (
-                        <div>
-                            <div key={index}>
+                        <div key={result.policyNumber || index}>
+                            <div>
                                 <h2>Name:</h2>
                                 <p>{result.name}</p>
                             </div>
-                            <div key={index}>
+                            <div>
                                 <h2>Policy Number:</h2>
                                 <p>{result.policyNumber}</p>
                             </div>
-                            <div key={index}>
+                            <div>
+                                <h2>Premium date:</h2>
+                                <p>{result.premiumDate.toLocaleDateString()}</p>
+                            </div>
+                            <div>
                                 <h2>Phone Number:</h2>
                                 <p>{result.phoneNumber}</p>
+                            </div>
+                            <div>
+                                <h2>Last date:</h2>
+                                <p>
+                                    {result.premiumDate 
+                                        ? new Date(result.premiumDate.getFullYear(), result.premiumDate.getMonth() + 1, result.premiumDate.getDate()).toLocaleDateString()
+                                        : 'Not Allowed'
+                                    }
+                                </p>
                             </div>
                         </div>
                     ))}
