@@ -1,25 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
-import { EntrySection } from "./components/EntrySection"
-import { SearchSection } from "./components/SearchSection"
-import { Home } from "./components/Home";
+import { Home } from "./pages/home";
+import { NewPolicy } from "./pages/newPolicy";
+import { PaymentDue } from "./pages/paymentDue";
+import { Layout } from "./layout/layout";
 
 function App() {
-  const [entries, setEntries] = useState([]);
-
-  const addEntry = (newEntry) => {
-    setEntries((prev) => [...prev, newEntry]);
-  }
-
   return (
     <>
-      <BrowserRouter>
-      <Routes>
-          <Route path="/entry" element={<EntrySection onSave={addEntry}/>}/>
-          <Route path="/search" element={<SearchSection entries={entries}/>} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
+     <Layout />
     </>
   )
 }
