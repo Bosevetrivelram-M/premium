@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table } from '../components/table';
+import { ButtonGroup } from '../components/buttonGroup/buttonGroup';
 
 export const PaymentDue = () => {
   const tableDetails = {
@@ -13,23 +14,48 @@ export const PaymentDue = () => {
       ],
       datas: [
         {
-            name: "Sophia Clark",
-            policyNumber: "PL123456",
-            amount: 250,
-            contact: "Call / WhatsApp",
-            status: "Unpaid",
-            action: "Mark as Paid"
+          name: "Sophia Clark",
+          policyNumber: "PL123456",
+          amount: 250,
+          status: "Unpaid",
+          action: "Mark as Paid"
         },
         {
-            name: "",
-            policyNumber: "PL789101",
-            amount: 350,
-            contact: "Call / WhatsApp",
-            status: "Unpaid",
-            action: "Mark as Paid"
+          name: "Ethan Bennett",
+          policyNumber: "PL789101",
+          amount: 350,
+          status: "Unpaid",
+          action: "Mark as Paid"
+        },
+        {
+          name: "Olivia Carter",
+          policyNumber: "PL345678",
+          amount: 320,
+          status: "Unpaid",
+          action: "Mark as Paid"
+        },
+        {
+          name: "Liam Davis",
+          policyNumber: "PL901234",
+          amount: 200,
+          status: "Unpaid",
+          action: "Mark as Paid"
+        },
+        {
+          name: "Ava Evans",
+          policyNumber: "PL567890",
+          amount: 280,
+          contact: "Call / WhatsApp",
+          status: "Unpaid",
+          action: "Mark as Paid"
         }
       ]  
     };
+
+    const buttonDetails = [
+      {btnName: "Call", btnStyle: "bg-[#87cdf6] py-1.5 px-3"},
+      {btnName: "Whatsapp", btnStyle: "bg-[#8ce68c] py-1.5 px-3"}
+    ];
 
   return (
     <div>
@@ -46,6 +72,11 @@ export const PaymentDue = () => {
 
             <Table 
                 tableDetails={tableDetails}
+                contactBtn={
+                  <ButtonGroup 
+                    buttons={buttonDetails}
+                  />
+                }
             />
     </div>
   )
