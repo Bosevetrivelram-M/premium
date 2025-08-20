@@ -1,8 +1,12 @@
 import React from 'react'
 import { NewPolicyCard } from '../components/newPolicyCard';
 import { Button } from '../components/button';
+import { useDispatch } from 'react-redux';
+import { setUsers } from '../slices/userSlice';
 
 export const NewPolicy = () => {
+    const dispatch = useDispatch();
+
     const [formData, setFormData] = React.useState({
         policyHolderName: "",
         nomineeName: "",
@@ -15,12 +19,43 @@ export const NewPolicy = () => {
     });
 
     const handleChange = (field) => (e) => {
-        setFormData({...formData, [field]: e?.target?.value})
+        setFormData({...formData, [field]: e.target.value})
     };
 
     // React.useEffect(() => {
     //     console.log(formData);
     // },[formData])
+
+    const handleSavePolicy = () => {
+        dispatch(setUsers(formData));
+
+        setFormData({
+            policyHolderName: "",
+            nomineeName: "",
+            address: "",
+            policyNumber: "",
+            phoneNumber: "",
+            whatsappNumber: "",
+            premiumAmount: "",
+            paymentMode: "Monthly"
+        });
+            
+        // console.log("Policy saved to Redux:", formData);
+    }
+
+    const handleResetForm = () => {
+        setFormData({
+        policyHolderName: "",
+        nomineeName: "",
+        address: "",
+        policyNumber: "",
+        phoneNumber: "",
+        whatsappNumber: "",
+        premiumAmount: "",
+        paymentMode: "Monthly"
+        });
+        console.log("Form reset");
+    };
 
     const inputDetails = [
         {
@@ -104,14 +139,14 @@ export const NewPolicy = () => {
                 <Button 
                     btnName="Save Policy"
                     btnStyle="bg-[#0D80F2] text-[#F7FAFC]"
-                    onClick={() => console.log("Save Policy clicked")}
+                    onClick={handleSavePolicy}
                 />
             </div>
             <div>
                 <Button 
                     btnName="Reset Form"
                     btnStyle="bg-[#E8EDF5] text-[#0D141C]"
-                    onClick={() => console.log("Resest Form clicked")}
+                    onClick={handleResetForm}
                 />
             </div>
         </div>
