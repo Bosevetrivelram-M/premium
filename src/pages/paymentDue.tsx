@@ -2,7 +2,33 @@ import React from 'react'
 import { Table } from '../components/table';
 import { ButtonGroup } from '../components/buttonGroup/buttonGroup';
 
-export const PaymentDue = () => {
+interface TableRow {
+  name: string;
+  policyNumber: string;
+  amount: number;
+  status: string;
+  action: string;
+}
+
+interface TableDetail {
+  header: string[];
+  datas: TableRow[];
+}
+
+interface TableProps {
+  tableDetails: TableDetail;
+  contactBtn: React.ReactNode;
+}
+
+interface ButtonDetail {
+  btnName: string;
+  btnStyle?: string;
+}
+
+interface ButtonGroupProp {
+  buttons: ButtonDetail[];
+}
+export const PaymentDue = (): React.JSX.Element => {
   const tableDetails = {
       header: [
         "Policy Holder Name",
@@ -52,7 +78,7 @@ export const PaymentDue = () => {
       ]  
     };
 
-    const buttonDetails = [
+    const buttonDetails: ButtonDetail[] = [
       {btnName: "Call", btnStyle: "bg-[#87cdf6] py-1.5 px-3"},
       {btnName: "Whatsapp", btnStyle: "bg-[#8ce68c] py-1.5 px-3"}
     ];

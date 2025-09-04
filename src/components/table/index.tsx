@@ -1,6 +1,24 @@
 import React from "react";
 
-export const Table = ({ tableDetails, contactBtn }) => {
+interface TableRow {
+  name: string;
+  policyNumber: string;
+  amount: number;
+  status: string;
+  action: string;
+}
+
+interface TableDetail {
+  header: string[];
+  datas: TableRow[];
+}
+
+interface TableProps {
+  tableDetails: TableDetail;
+  contactBtn: React.ReactNode;
+}
+
+export const Table = ({ tableDetails, contactBtn }: TableProps): React.JSX.Element => {
   return (
     <div className="py-4 pl-1 flex items-center">
       <div className="max-w-3/4 rounded-lg border-2 border-[#cfdbe8]">

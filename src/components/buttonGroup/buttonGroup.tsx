@@ -1,7 +1,16 @@
 import React from 'react'
 import cn from 'classnames'
 
-export const ButtonGroup = ({ buttons }) => {
+interface ButtonDetail {
+  btnName: string;
+  btnStyle?: string;
+}
+
+interface ButtonGroupProp {
+  buttons: ButtonDetail[];
+}
+
+export const ButtonGroup = ({ buttons }: ButtonGroupProp): React.JSX.Element => {
     // const buttonDetails = [
     //     {btnName: "Call", btnStyle: "bg-[#87cdf6] py-1.5 px-3"},
     //     {btnName: "Whatsapp", btnStyle: "bg-[#8ce68c] py-1.5 px-3"}

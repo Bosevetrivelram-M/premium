@@ -4,10 +4,28 @@ import { Button } from '../components/button';
 import { useDispatch } from 'react-redux';
 import { setUsers } from '../slices/userSlice';
 
-export const NewPolicy = () => {
+interface PolicyFormData {
+    policyHolderName: string;
+    nomineeName: string;
+    address: string;
+    policyNumber: string;
+    phoneNumber: string;
+    whatsappNumber: string;
+    premiumAmount: string;
+    paymentMode: "Monthly" | "Half-Yearly" | "Yearly";
+}
+
+interface InputDetail {
+    inputName: string;
+    placeholderName: string;
+    field: keyof PolicyFormData;
+    style?: string;
+}
+
+export const NewPolicy = (): React.JSX.Element => {
     const dispatch = useDispatch();
 
-    const [formData, setFormData] = React.useState({
+    const [formData, setFormData] = React.useState<PolicyFormData>({
         policyHolderName: "",
         nomineeName: "",
         address: "",
@@ -18,7 +36,7 @@ export const NewPolicy = () => {
         paymentMode: "Monthly"
     });
 
-    const handleChange = (field) => (e) => {
+    const handleChange = (field: keyof PolicyFormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setFormData({...formData, [field]: e.target.value})
     };
 
@@ -57,7 +75,7 @@ export const NewPolicy = () => {
         console.log("Form reset");
     };
 
-    const inputDetails = [
+    const inputDetails: InputDetail[] = [
         {
             inputName: "Policy Holder Name",
             placeholderName: "Enter Policy holder name",
@@ -123,8 +141,9 @@ export const NewPolicy = () => {
                         className="w-1/4 text-base font-normal leading-normal rounded-lg px-4 pl-4 pt-3 pb-3 text-[#0D141C] bg-[#e8edf5] focus:outline-0 focus:ring-0 placeholder:text-[#4A739C] appearance-none"
                         value={formData?.paymentMode}    
                         onChange={handleChange("paymentMode")}
+                        autoFocus
                     >
-                        <option  value="" disabled autofocus>Select Payment Mode</option>
+                        <option  value="" disabled>Select Payment Mode</option>
                         <option value="Monthly">Monthly</option>
                         <option value="Half-Yearly">Half-Yearly</option>
                         <option value="Yearly">Yearly</option>
