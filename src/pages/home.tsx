@@ -1,9 +1,23 @@
 import React from 'react'
-import { HomeCard } from '../components/homeCard'
+import { HomeCard } from '../components/homeCard/homeCard'
 import { PaymentCard } from '../components/paymentCard';
 
-export const Home = () => {
-    const cardDetails = [
+interface CardDetail {
+    key: number;
+    cardName: string;
+    count: number;
+}
+
+interface PaymentDetail {
+    key: number;
+    policyName: string;
+    amount: number;
+    modeOfPayment: "Monthly" | "Half-Yearly" | "Yearly";
+    dueIn: number;
+}
+
+export const Home = (): React.JSX.Element => {
+    const cardDetails: CardDetail[] = [
         {
             key: 1,
             cardName: "Your Total Policies",
@@ -26,7 +40,7 @@ export const Home = () => {
         },
     ];
 
-    const paymentDetails = [
+    const paymentDetails: PaymentDetail[] = [
         {
             key: 1,
             policyName: "Policy A",

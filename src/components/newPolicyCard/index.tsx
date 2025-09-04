@@ -1,7 +1,15 @@
 import React from "react";
 import cn from "classnames"; 
 
-export const NewPolicyCard = ({ inputName, placeholderName, value, onChangeFunction, style }) => {
+interface NewPolicyCardProps {
+  inputName: string;
+  placeholderName: string;
+  value: string;
+  onChangeFunction: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  style?: string;
+}
+
+export const NewPolicyCard = ({ inputName, placeholderName, value, onChangeFunction, style }: NewPolicyCardProps): React.JSX.Element => {
   return (
     <div>
       <p className="font-inter font-medium text-[16px] text-[#0D141C] pb-3">

@@ -1,6 +1,14 @@
 import React from "react";
 
-export const PaymentCard = ({ policyName, amount, modeOfPayment, dueIn }) => {
+interface PaymentCardProps {
+  key: number;
+  policyName: string;
+  amount: number;
+  modeOfPayment: "Monthly" | "Half-Yearly" | "Yearly";
+  dueIn: number;
+}
+
+export const PaymentCard = ({ policyName, amount, modeOfPayment, dueIn }: PaymentCardProps): React.JSX.Element => {
   return (
     <div className="border-2 border-[#E8EDF5] p-4 flex items-center justify-between w-[77.5%] rounded-lg">
       <div>
